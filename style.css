@@ -1,0 +1,128 @@
+/* ===== Base Styles ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* ===== Loading Screen ===== */
+#loadingScreen {
+  transition: opacity 0.5s ease;
+}
+#loadingScreen.hidden {
+  opacity: 0;
+}
+
+/* ===== Navigation ===== */
+#mainNav {
+  transition: all 0.3s ease;
+}
+#mainNav a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+#mainNav a:hover {
+  color: #fbbf24;
+}
+
+/* ===== Reveal Animation ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Chatbot ===== */
+#chatbotWindow.open {
+  display: block !important;
+}
+.chat-msg {
+  padding: 8px 12px;
+  border-radius: 12px;
+  max-width: 85%;
+  margin: 4px 0;
+}
+.chat-msg.user {
+  background: #fbbf24;
+  color: #000;
+  margin-left: auto;
+}
+.chat-msg.bot {
+  background: #374151;
+}
+
+/* ===== Toast ===== */
+#toast.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+#toast {
+  transition: opacity 0.3s ease;
+}
+
+/* ===== Lightbox ===== */
+#lightbox.open {
+  display: flex !important;
+}
+
+/* ===== Particles ===== */
+.particle {
+  position: absolute;
+  background: #fbbf24;
+  border-radius: 50%;
+  animation: float 6s infinite ease-in-out;
+  pointer-events: none;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+  50% { transform: translateY(-20px) scale(1.2); opacity: 0.6; }
+}
+
+/* ===== Mobile Menu ===== */
+#mobileMenu.open {
+  display: flex !important;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(10,10,10,0.98);
+  padding: 1rem;
+}
+
+/* ===== Forms ===== */
+.form-input {
+  width: 100%;
+  padding: 12px;
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  color: #fff;
+  transition: border-color 0.3s;
+}
+.form-input:focus {
+  outline: none;
+  border-color: #fbbf24;
+}
+
+/* ===== Buttons ===== */
+button {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+button:active {
+  transform: scale(0.98);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .text-5xl { font-size: 2.5rem !important; }
+}

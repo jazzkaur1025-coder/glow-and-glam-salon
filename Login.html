@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Login to your Glow & Glam Luxury Salon account">
+<title>Login | Glow & Glam Luxury Salon</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/playfair-display@5.0.0/index.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/poppins@5.0.0/index.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/montserrat@5.0.0/index.min.css" rel="stylesheet">
+<style>
+:root{--gold:#D4AF37;--gold-light:#F4E4BC;--rose-gold:#B76E79;--rose-gold-light:#E8C4C4;--black:#0A0A0A;--dark:#1A1A1A;--dark-card:#222222}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--black);color:#E8E8E8;overflow-x:hidden}
+h1,h2,h3,h4,h5{font-family:'Playfair Display',serif}
+.font-montserrat{font-family:'Montserrat',sans-serif}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}
+.glass{background:rgba(255,255,255,0.05);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(212,175,55,0.15);border-radius:16px}
+.glass-card{background:rgba(26,26,26,0.8);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border:1px solid rgba(212,175,55,0.2);border-radius:20px;transition:all 0.4s ease}
+.glass-card:hover{border-color:rgba(212,175,55,0.5);transform:translateY(-5px);box-shadow:0 20px 60px rgba(212,175,55,0.15)}
+.gold-text{background:linear-gradient(135deg,#D4AF37,#F4E4BC,#B76E79,#D4AF37);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:goldShimmer 4s ease infinite}
+@keyframes goldShimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.gold-btn{background:linear-gradient(135deg,#D4AF37,#F4E4BC,#D4AF37);background-size:200% 200%;color:#0A0A0A;font-weight:600;padding:14px 40px;border-radius:50px;border:none;cursor:pointer;transition:all 0.4s ease;font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:2px;font-size:14px;position:relative;overflow:hidden;display:inline-block;text-decoration:none;text-align:center}
+.gold-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);transition:left 0.5s}
+.gold-btn:hover::before{left:100%}
+.gold-btn:hover{background-position:100% 0;box-shadow:0 0 30px rgba(212,175,55,0.5),0 0 60px rgba(212,175,55,0.2);transform:scale(1.02)}
+.rose-btn{background:linear-gradient(135deg,#B76E79,#E8C4C4,#B76E79);color:#fff;font-weight:600;padding:12px 32px;border-radius:50px;border:none;cursor:pointer;transition:all 0.4s ease;font-family:'Montserrat',sans-serif;letter-spacing:1px;display:inline-block;text-decoration:none;text-align:center}
+.rose-btn:hover{box-shadow:0 0 25px rgba(183,110,121,0.5);transform:translateY(-2px)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
+@keyframes slideDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideRight{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
+.animate-float{animation:float 3s ease-in-out infinite}
+.reveal{opacity:0;transform:translateY(30px);transition:all 0.8s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+.nav-link{position:relative;color:#E8E8E8;text-decoration:none;font-size:14px;font-weight:500;letter-spacing:1px;transition:color 0.3s}
+.nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--gold);transition:width 0.3s}
+.nav-link:hover{color:var(--gold)}.nav-link:hover::after{width:100%}
+.chatbot-toggle{position:fixed;bottom:30px;right:30px;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--rose-gold));display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:1000;box-shadow:0 4px 20px rgba(212,175,55,0.4);transition:all 0.3s;animation:float 3s ease-in-out infinite}
+.chatbot-toggle:hover{transform:scale(1.1)}
+.chatbot-window{position:fixed;bottom:100px;right:30px;width:380px;max-height:500px;border-radius:20px;z-index:1000;display:none;flex-direction:column;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.5)}
+.chatbot-window.open{display:flex;animation:slideDown 0.3s ease}
+.chat-messages{flex:1;overflow-y:auto;padding:20px}
+.chat-msg{margin-bottom:12px;padding:10px 16px;border-radius:16px;font-size:14px;max-width:80%}
+.chat-msg.bot{background:rgba(212,175,55,0.15);border:1px solid rgba(212,175,55,0.2);border-radius:16px 16px 16px 4px}
+.chat-msg.user{background:var(--gold);color:var(--black);border-radius:16px 16px 4px 16px;margin-left:auto}
+.chat-input-area{display:flex;padding:12px;border-top:1px solid rgba(212,175,55,0.2)}
+.chat-input-area input{flex:1;background:rgba(255,255,255,0.05);border:1px solid rgba(212,175,55,0.2);border-radius:20px;padding:10px 16px;color:#E8E8E8;font-size:14px;outline:none}
+.chat-input-area input:focus{border-color:var(--gold)}
+.chat-input-area button{margin-left:8px;background:var(--gold);color:var(--black);border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:18px}
+.mobile-menu{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,0.98);z-index:1500;display:none;flex-direction:column;align-items:center;justify-content:center;gap:24px;backdrop-filter:blur(20px)}
+.mobile-menu.open{display:flex}
+.toast{position:fixed;top:100px;right:30px;background:var(--dark);border:1px solid var(--gold);border-radius:12px;padding:16px 24px;z-index:3000;animation:slideDown 0.3s ease;display:none}
+.toast.show{display:block}
+@media(max-width:768px){.desktop-nav{display:none!important}.mobile-toggle{display:flex!important}}
+@media(min-width:769px){.mobile-toggle{display:none!important}}
+.loading-screen{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--black);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 0.5s}
+.loading-screen.hidden{opacity:0;pointer-events:none}
+.loader{width:60px;height:60px;border:3px solid rgba(212,175,55,0.2);border-top-color:var(--gold);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.form-input{background:rgba(255,255,255,0.05);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:14px 20px;color:#E8E8E8;font-size:14px;width:100%;outline:none;transition:border-color 0.3s,box-shadow 0.3s;font-family:'Poppins',sans-serif}
+.form-input:focus{border-color:var(--gold);box-shadow:0 0 15px rgba(212,175,55,0.1)}
+.form-input::placeholder{color:rgba(232,232,232,0.4)}
+.password-toggle{position:absolute;right:16px;top:50%;transform:translateY(-50%);cursor:pointer;color:rgba(232,232,232,0.4);transition:color 0.3s;font-size:18px}
+.password-toggle:hover{color:var(--gold)}
+.social-login-btn{background:rgba(255,255,255,0.05);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:12px 20px;width:100%;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:all 0.3s;color:#E8E8E8;font-family:'Poppins',sans-serif;font-size:14px}
+.social-login-btn:hover{border-color:var(--gold);background:rgba(212,175,55,0.1);transform:translateY(-2px)}
+.login-bg{background:linear-gradient(135deg,rgba(10,10,10,0.95),rgba(26,26,26,0.9)),url('https://image.qwenlm.ai/public_source/39eded05-ce2e-44ce-b3e1-d43b8e3218c8/177c2991f-419d-49af-b342-8b35d3e54ca6.png');background-size:cover;background-position:center;background-attachment:fixed;min-height:100vh}
+</style>
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div class="loading-screen" id="loadingScreen">
+<div class="loader mb-4"></div>
+<p class="gold-text font-montserrat text-sm tracking-widest">GLOW & GLAM</p>
+</div>
+
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="mainNav">
+<div class="glass" style="border-radius:0;border-bottom:1px solid rgba(212,175,55,0.15);">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<a href="index.html" class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-600 to-rose-400 flex items-center justify-center">
+<span class="text-black font-bold text-lg font-montserrat">G</span>
+</div>
+<div>
+<h1 class="text-xl gold-text font-bold" style="font-family:'Playfair Display',serif;">Glow & Glam</h1>
+<p class="text-xs text-gray-500 tracking-wider font-montserrat">LUXURY SALON</p>
+</div>
+</a>
+<div class="desktop-nav hidden md:flex items-center gap-6">
+<a href="index.html" class="nav-link">Home</a>
+<a href="about.html" class="nav-link">About</a>
+<a href="services.html" class="nav-link">Services</a>
+<a href="pricing.html" class="nav-link">Pricing</a>
+<a href="gallery.html" class="nav-link">Gallery</a>
+<a href="bridal.html" class="nav-link">Bridal</a>
+<a href="booking.html" class="nav-link">Book Now</a>
+<a href="blog.html" class="nav-link">Blog</a>
+<a href="contact.html" class="nav-link">Contact</a>
+<a href="login.html" class="rose-btn text-sm px-6 py-2">Login</a>
+</div>
+<button class="mobile-toggle hidden md:hidden flex-col gap-1.5" onclick="toggleMobileMenu()">
+<span class="w-6 h-0.5 bg-yellow-500 transition-all"></span>
+<span class="w-6 h-0.5 bg-yellow-500 transition-all"></span>
+<span class="w-6 h-0.5 bg-yellow-500 transition-all"></span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+<button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-3xl text-yellow-500">&times;</button>
+<a href="index.html" class="nav-link text-2xl">Home</a>
+<a href="about.html" class="nav-link text-2xl">About</a>
+<a href="services.html" class="nav-link text-2xl">Services</a>
+<a href="pricing.html" class="nav-link text-2xl">Pricing</a>
+<a href="gallery.html" class="nav-link text-2xl">Gallery</a>
+<a href="bridal.html" class="nav-link text-2xl">Bridal Packages</a>
+<a href="booking.html" class="nav-link text-2xl">Book Appointment</a>
+<a href="blog.html" class="nav-link text-2xl">Blog</a>
+<a href="contact.html" class="nav-link text-2xl">Contact</a>
+<div class="flex gap-4 mt-4">
+<a href="login.html" class="rose-btn">Login</a>
+<a href="signup.html" class="gold-btn text-sm">Sign Up</a>
+</div>
+</div>
+
+<!-- Login Section -->
+<section class="login-bg flex items-center justify-center py-28 px-4">
+<div class="max-w-5xl w-full grid md:grid-cols-2 gap-8 items-center">
+
+<!-- Left Side - Branding -->
+<div class="hidden md:block reveal">
+<div class="mb-8">
+<div class="w-20 h-20 rounded-full bg-gradient-to-br from-yellow-600 to-rose-400 flex items-center justify-center mb-6">
+<span class="text-white font-bold text-3xl font-montserrat">G</span>
+</div>
+<h2 class="text-4xl font-bold mb-4">Welcome Back to<br><span class="gold-text">Glow & Glam</span></h2>
+<p class="text-gray-400 leading-relaxed">Access your account to manage bookings, track memberships, view your beauty history, and enjoy exclusive member benefits.</p>
+</div>
+<div class="space-y-4">
+<div class="glass p-4 rounded-xl flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-500"></div>
+<div>
+<p class="font-bold text-sm">Manage Bookings</p>
+<p class="text-xs text-gray-400">View & reschedule appointments</p>
+</div>
+</div>
+<div class="glass p-4 rounded-xl flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-500"></div>
+<div>
+<p class="font-bold text-sm">Membership Benefits</p>
+<p class="text-xs text-gray-400">Track rewards & discounts</p>
+</div>
+</div>
+<div class="glass p-4 rounded-xl flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-500"></div>
+<div>
+<p class="font-bold text-sm">Exclusive Offers</p>
+<p class="text-xs text-gray-400">Members-only deals & promotions</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Right Side - Login Form -->
+<div class="glass-card p-8 md:p-10 reveal">
+<div class="text-center mb-8">
+<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-yellow-600 to-rose-400 flex items-center justify-center md:hidden">
+<span class="text-white font-bold text-2xl font-montserrat">G</span>
+</div>
+<h2 class="text-2xl font-bold gold-text">Sign In</h2>
+<p class="text-sm text-gray-400 mt-2">Enter your credentials to access your account</p>
+</div>
+
+<form onsubmit="handleLogin(event)">
+<div class="mb-5">
+<label class="text-sm text-gray-400 mb-2 block">Email Address</label>
+<input type="email" id="loginEmail" class="form-input" placeholder="your@email.com" required>
+</div>
+<div class="mb-5 relative">
+<label class="text-sm text-gray-400 mb-2 block">Password</label>
+<input type="password" id="loginPassword" class="form-input pr-12" placeholder="Enter your password" required>
+<span class="password-toggle" onclick="togglePassword()">👁️</span>
+</div>
+<div class="flex justify-between items-center mb-6">
+<label class="flex items-center gap-2 text-sm text-gray-400 cursor-pointer">
+<input type="checkbox" id="rememberMe" class="accent-yellow-500 w-4 h-4 rounded"> Remember me
+</label>
+<a href="#" class="text-sm text-yellow-500 hover:text-yellow-400 transition hover:underline">Forgot Password?</a>
+</div>
+<button type="submit" class="gold-btn w-full mb-6">Sign In</button>
+<div class="flex items-center gap-4 mb-6">
+<div class="flex-1 h-px bg-gray-700"></div>
+<span class="text-sm text-gray-500">or continue with</span>
+<div class="flex-1 h-px bg-gray-700"></div>
+</div>
+<div class="grid grid-cols-3 gap-3 mb-6">
+<button type="button" onclick="socialLogin('google')" class="social-login-btn">
+<span class="text-xl"></span>
+<span class="text-xs">Google</span>
+</button>
+<button type="button" onclick="socialLogin('apple')" class="social-login-btn">
+<span class="text-xl"></span>
+<span class="text-xs">Apple</span>
+</button>
+<button type="button" onclick="socialLogin('facebook')" class="social-login-btn">
+<span class="text-xl"></span>
+<span class="text-xs">Facebook</span>
+</button>
+</div>
+<p class="text-center text-sm text-gray-400">
+Don't have an account? <a href="signup.html" class="text-yellow-500 hover:text-yellow-400 transition hover:underline font-bold">Create Account</a>
+</p>
+</form>
+
+<div class="mt-6 pt-6 border-t border-gray-800 text-center">
+<a href="index.html" class="text-sm text-gray-500 hover:text-yellow-500 transition inline-flex items-center gap-2">← Back to Home</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Chatbot -->
+<div class="chatbot-toggle" onclick="toggleChatbot()" id="chatbotToggle">
+<span class="text-2xl"></span>
+</div>
+<div class="chatbot-window glass" id="chatbotWindow">
+<div class="p-4 border-b border-yellow-500/20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-500 to-rose-400 flex items-center justify-center">
+<span class="text-black text-sm font-bold">G</span>
+</div>
+<div>
+<p class="font-bold text-sm">GlowBot</p>
+<p class="text-xs text-green-400">● Online</p>
+</div>
+</div>
+<button onclick="toggleChatbot()" class="text-gray-400 hover:text-yellow-500 text-xl">&times;</button>
+</div>
+<div class="chat-messages" id="chatMessages">
+<div class="chat-msg bot">Hi there!  I'm GlowBot, your personal beauty assistant. How can I help you today?</div>
+</div>
+<div class="chat-input-area">
+<input type="text" id="chatInput" placeholder="Type your message..." onkeypress="if(event.key==='Enter')sendChatMessage()">
+<button onclick="sendChatMessage()"></button>
+</div>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast">
+<p id="toastMessage" class="text-sm"></p>
+</div>
+
+<script>
+// Loading Screen
+window.addEventListener('load', function() {
+setTimeout(function() {
+var ls = document.getElementById('loadingScreen');
+if (ls) ls.classList.add('hidden');
+}, 1500);
+});
+
+// Navigation Scroll Effect
+window.addEventListener('scroll', function() {
+var nav = document.getElementById('mainNav');
+if (nav) {
+if (window.scrollY > 50) {
+nav.style.background = 'rgba(10,10,10,0.95)';
+} else {
+nav.style.background = 'transparent';
+}
+}
+});
+
+// Mobile Menu Toggle
+function toggleMobileMenu() {
+var menu = document.getElementById('mobileMenu');
+if (menu) {
+menu.classList.toggle('open');
+document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+}
+
+// Reveal on Scroll Animation
+function initReveal() {
+var reveals = document.querySelectorAll('.reveal');
+if (typeof IntersectionObserver !== 'undefined') {
+var observer = new IntersectionObserver(function(entries) {
+entries.forEach(function(entry) {
+if (entry.isIntersecting) {
+entry.target.classList.add('active');
+}
+});
+}, { threshold: 0.1 });
+reveals.forEach(function(el) {
+observer.observe(el);
+});
+} else {
+reveals.forEach(function(el) {
+el.classList.add('active');
+});
+}
+}
+
+// Chatbot Toggle
+function toggleChatbot() {
+var w = document.getElementById('chatbotWindow');
+if (w) w.classList.toggle('open');
+}
+
+// Toast Notification
+function showToast(msg) {
+var toast = document.getElementById('toast');
+var toastMsg = document.getElementById('toastMessage');
+if (toast && toastMsg) {
+toastMsg.textContent = msg;
+toast.classList.add('show');
+setTimeout(function() {
+toast.classList.remove('show');
+}, 4000);
+}
+}
+
+// Password Toggle
+function togglePassword() {
+var pwd = document.getElementById('loginPassword');
+var toggle = document.querySelector('.password-toggle');
+if (!pwd || !toggle) return;
+if (pwd.type === 'password') {
+pwd.type = 'text';
+toggle.textContent = '';
+} else {
+pwd.type = 'password';
+toggle.textContent = '👁️';
+}
+}
+
+// Login Handler
+function handleLogin(e) {
+e.preventDefault();
+var email = document.getElementById('loginEmail').value;
+var password = document.getElementById('loginPassword').value;
+
+if (!email || !password) {
+showToast('Please fill in all fields! ️');
+return;
+}
+
+showToast('Welcome back to Glow & Glam! ✨');
+
+// Redirect to home after delay
+setTimeout(function() {
+window.location.href = 'index.html';
+}, 2000);
+}
+
+// Social Login
+function socialLogin(provider) {
+var names = { google: 'Google', apple: 'Apple', facebook: 'Facebook' };
+showToast(names[provider] + ' Sign In coming soon! 🔄');
+}
+
+// Chatbot Responses
+var chatResponses = {
+'hello': 'Hello! Welcome to Glow & Glam! ',
+'hi': 'Hi there! Ready to transform your look?',
+'hey': 'Hey! 👋 Welcome to Glow & Glam Luxury Salon!',
+'booking': 'You can <a href="booking.html" class="text-yellow-400 underline">book here</a> or WhatsApp us!',
+'book': 'You can <a href="booking.html" class="text-yellow-400 underline">book here</a> or WhatsApp us!',
+'services': 'We offer 15+ luxury services! <a href="services.html" class="text-yellow-400 underline">View all</a>',
+'service': 'We offer 15+ luxury services! <a href="services.html" class="text-yellow-400 underline">View all</a>',
+'price': 'Services start from ₹600. <a href="pricing.html" class="text-yellow-400 underline">See pricing</a>',
+'pricing': 'Services start from ₹600. <a href="pricing.html" class="text-yellow-400 underline">See pricing</a>',
+'cost': 'Services start from ₹600. <a href="pricing.html" class="text-yellow-400 underline">See pricing</a>',
+'hours': 'Mon-Sat: 10AM-8PM, Sunday: 11AM-6PM',
+'timing': 'Mon-Sat: 10AM-8PM, Sunday: 11AM-6PM',
+'bridal': 'Bridal packages from ₹24,999! <a href="bridal.html" class="text-yellow-400 underline">View packages</a>',
+'wedding': 'Bridal packages from ₹24,999! <a href="bridal.html" class="text-yellow-400 underline">View packages</a>',
+'location': '123 Luxury Avenue, Mumbai. <a href="contact.html" class="text-yellow-400 underline">Contact us</a>',
+'address': '123 Luxury Avenue, Mumbai. <a href="contact.html" class="text-yellow-400 underline">Get directions</a>',
+'contact': 'You can reach us at +91 99999 99999 or email info@glowandglam.com. Or visit our <a href="contact.html" class="text-yellow-400 underline">contact page</a>!',
+'phone': 'Call us at +91 99999 99999 or WhatsApp us directly!',
+'email': 'Email us at info@glowandglam.com or bookings@glowandglam.com',
+'gallery': 'Check out our stunning gallery! <a href="gallery.html" class="text-yellow-400 underline">View all images</a> ✨',
+'blog': 'Check out our latest beauty articles on our <a href="blog.html" class="text-yellow-400 underline">blog</a>! ✨',
+'login': 'You\'re on our login page! Enter your email and password to sign in.',
+'signin': 'You\'re on our login page! Enter your email and password to sign in.',
+'signup': 'You can create an account on our <a href="signup.html" class="text-yellow-400 underline">signup page</a>!',
+'register': 'You can create an account on our <a href="signup.html" class="text-yellow-400 underline">signup page</a>!',
+'password': 'Click "Forgot Password" on the login form to reset your password via email.',
+'thank': 'You\'re welcome! ',
+'thanks': 'You\'re welcome! ✨',
+'default': 'For assistance, call +91 99999 99999 or <a href="contact.html" class="text-yellow-400 underline">contact us</a>! 😊'
+};
+
+function sendChatMessage() {
+var input = document.getElementById('chatInput');
+var messagesDiv = document.getElementById('chatMessages');
+if (!input || !messagesDiv) return;
+
+var msg = input.value.trim();
+if (!msg) return;
+
+// Add user message
+var userMsg = document.createElement('div');
+userMsg.className = 'chat-msg user';
+userMsg.textContent = msg;
+messagesDiv.appendChild(userMsg);
+input.value = '';
+
+// Generate bot response
+setTimeout(function() {
+var lowerMsg = msg.toLowerCase();
+var response = chatResponses['default'];
+
+for (var key in chatResponses) {
+if (lowerMsg.indexOf(key) !== -1) {
+response = chatResponses[key];
+break;
+}
+}
+
+var botMsg = document.createElement('div');
+botMsg.className = 'chat-msg bot';
+botMsg.innerHTML = response;
+messagesDiv.appendChild(botMsg);
+messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}, 800);
+
+messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+initReveal();
+});
+</script>
+</body>
+</html>
+

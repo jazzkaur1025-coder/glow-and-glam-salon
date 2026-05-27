@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Glow & Glam Luxury Salon Pricing - Premium beauty packages and membership plans">
+<title>Pricing Plans | Glow & Glam Luxury Salon</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/playfair-display@5.0.0/index.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/poppins@5.0.0/index.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/montserrat@5.0.0/index.min.css" rel="stylesheet">
+<style>
+:root{--gold:#D4AF37;--gold-light:#F4E4BC;--rose-gold:#B76E79;--rose-gold-light:#E8C4C4;--nude-pink:#E8D5C4;--black:#0A0A0A;--dark:#1A1A1A;--dark-card:#222222;--dark-hover:#2A2A2A}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--black);color:#E8E8E8;overflow-x:hidden}
+h1,h2,h3,h4,h5{font-family:'Playfair Display',serif}
+.font-montserrat{font-family:'Montserrat',sans-serif}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}
+.glass{background:rgba(255,255,255,0.05);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(212,175,55,0.15);border-radius:16px}
+.glass-card{background:rgba(26,26,26,0.8);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border:1px solid rgba(212,175,55,0.2);border-radius:20px;transition:all 0.4s ease}
+.glass-card:hover{border-color:rgba(212,175,55,0.5);transform:translateY(-5px);box-shadow:0 20px 60px rgba(212,175,55,0.15)}
+.gold-text{background:linear-gradient(135deg,#D4AF37,#F4E4BC,#B76E79,#D4AF37);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:goldShimmer 4s ease infinite}
+@keyframes goldShimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.gold-btn{background:linear-gradient(135deg,#D4AF37,#F4E4BC,#D4AF37);background-size:200% 200%;color:#0A0A0A;font-weight:600;padding:14px 40px;border-radius:50px;border:none;cursor:pointer;transition:all 0.4s ease;font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:2px;font-size:14px;position:relative;overflow:hidden}
+.gold-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);transition:left 0.5s}
+.gold-btn:hover::before{left:100%}
+.gold-btn:hover{background-position:100% 0;box-shadow:0 0 30px rgba(212,175,55,0.5),0 0 60px rgba(212,175,55,0.2);transform:scale(1.02)}
+.rose-btn{background:linear-gradient(135deg,#B76E79,#E8C4C4,#B76E79);color:#fff;font-weight:600;padding:12px 32px;border-radius:50px;border:none;cursor:pointer;transition:all 0.4s ease;font-family:'Montserrat',sans-serif;letter-spacing:1px}
+.rose-btn:hover{box-shadow:0 0 25px rgba(183,110,121,0.5);transform:translateY(-2px)}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
+@keyframes slideDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+.animate-float{animation:float 3s ease-in-out infinite}
+.reveal{opacity:0;transform:translateY(30px);transition:all 0.8s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+.section-divider{height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto;width:200px}
+.nav-link{position:relative;color:#E8E8E8;text-decoration:none;font-size:14px;font-weight:500;letter-spacing:1px;transition:color 0.3s}
+.nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--gold);transition:width 0.3s}
+.nav-link:hover{color:var(--gold)}.nav-link:hover::after{width:100%}
+.chatbot-toggle{position:fixed;bottom:30px;right:30px;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--rose-gold));display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:1000;box-shadow:0 4px 20px rgba(212,175,55,0.4);transition:all 0.3s;animation:float 3s ease-in-out infinite}
+.chatbot-toggle:hover{transform:scale(1.1)}
+.chatbot-window{position:fixed;bottom:100px;right:30px;width:380px;max-height:500px;border-radius:20px;z-index:1000;display:none;flex-direction:column;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.5)}
+.chatbot-window.open{display:flex;animation:slideDown 0.3s ease}
+.chat-messages{flex:1;overflow-y:auto;padding:20px}
+.chat-msg{margin-bottom:12px;padding:10px 16px;border-radius:16px;font-size:14px;max-width:80%}
+.chat-msg.bot{background:rgba(212,175,55,0.15);border:1px solid rgba(212,175,55,0.2);border-radius:16px 16px 16px 4px}
+.chat-msg.user{background:var(--gold);color:var(--black);border-radius:16px 16px 4px 16px;margin-left:auto}
+.chat-input-area{display:flex;padding:12px;border-top:1px solid rgba(212,175,55,0.2)}
+.chat-input-area input{flex:1;background:rgba(255,255,255,0.05);border:1px solid rgba(212,175,55,0.2);border-radius:20px;padding:10px 16px;color:#E8E8E8;font-size:14px;outline:none}
+.chat-input-area input:focus{border-color:var(--gold)}
+.chat-input-area button{margin-left:8px;background:var(--gold);color:var(--black);border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:18px}
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.8);display:none;align-items:center;justify-content:center;z-index:2000;backdrop-filter:blur(10px)}
+.modal-overlay.open{display:flex}
+.modal-content{background:var(--dark);border:1px solid rgba(212,175,55,0.3);border-radius:24px;padding:40px;max-width:500px;width:90%;animation:scaleIn 0.3s ease;position:relative}
+.mobile-menu{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,0.98);z-index:1500;display:none;flex-direction:column;align-items:center;justify-content:center;gap:24px;backdrop-filter:blur(20px)}
+.mobile-menu.open{display:flex}
+.membership-badge{background:linear-gradient(135deg,var(--gold),var(--rose-gold));color:var(--black);padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px}
+.toast{position:fixed;top:100px;right:30px;background:var(--dark);border:1px solid var(--gold);border-radius:12px;padding:16px 24px;z-index:3000;animation:slideDown 0.3s ease;display:none}
+.toast.show{display:block}
+@media(max-width:768px){.desktop-nav{display:none!important}.mobile-toggle{display:flex!important}}
+@media(min-width:769px){.mobile-toggle{display:none!important}}
+.loading-screen{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--black);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 0.5s}
+.loading-screen.hidden{opacity:0;pointer-events:none}
+.loader{width:60px;height:60px;border:3px solid rgba(212,175,55,0.2);border-top-color:var(--gold);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.form-input{background:rgba(255,255,255,0.05);border:1px solid rgba(212,175,55,0.2);border-radius:12px;padding:14px 20px;color:#E8E8E8;font-size:14px;width:100%;outline:none;transition:border-color 0.3s;font-family:'Poppins',sans-serif}
+.form-input:focus{border-color:var(--gold)}
+.pricing-table-row{display:grid;grid-template-columns:1fr auto;gap:8px;padding:10px 0;border-bottom:1px solid rgba(212,175,55,0.1)}
+.pricing-table-row:last-child{border-bottom:none}
+.discount-badge{position:absolute;top:16px;right:-8px;background:linear-gradient(135deg,#ef4444,#f97316);color:#fff;padding:6px 16px;font-size:11px;font-weight:700;border-radius:4px 0 0 4px;letter-spacing:1px}
+</style>
+</head>
+<body>
+
+<div class="loading-screen" id="loadingScreen"><div class="loader mb-4"></div><p class="gold-text font-montserrat text-sm tracking-widest">GLOW & GLAM</p></div>
+
+<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="mainNav">
+<div class="glass" style="border-radius:0;border-bottom:1px solid rgba(212,175,55,0.15);">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<a href="index.html" class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-600 to-rose-400 flex items-center justify-center"><span class="text-black font-bold text-lg font-montserrat">G</span></div>
+<div><h1 class="text-xl gold-text font-bold" style="font-family:'Playfair Display',serif;">Glow & Glam</h1><p class="text-xs text-gray-500 tracking-wider font-montserrat">LUXURY SALON</p></div>
+</a>
+<div class="desktop-nav hidden md:flex items-center gap-6">
+<a href="index.html" class="nav-link">Home</a>
+<a href="about.html" class="nav-link">About</a>
+<a href="services.html" class="nav-link">Services</a>
+<a href="pricing.html" class="nav-link" style="color:var(--gold)">Pricing</a>
+<a href="gallery.html" class="nav-link">Gallery</a>
+<a href="bridal.html" class="nav-link">Bridal</a>
+<a href="booking.html" class="nav-link">Book Now</a>
+<a href="blog.html" class="nav-link">Blog</a>
+<a href="contact.html" class="nav-link">Contact</a>
+<button onclick="openModal('loginModal')" class="rose-btn text-sm px-6 py-2">Login</button>
+</div>
+<button class="mobile-toggle hidden md:hidden flex-col gap-1.5" onclick="toggleMobileMenu()"><span class="w-6 h-0.5 bg-yellow-500 transition-all"></span><span class="w-6 h-0.5 bg-yellow-500 transition-all"></span><span class="w-6 h-0.5 bg-yellow-500 transition-all"></span></button>
+</div>
+</div>
+</div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+<button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-3xl text-yellow-500">&times;</button>
+<a href="index.html" class="nav-link text-2xl">Home</a>
+<a href="about.html" class="nav-link text-2xl">About</a>
+<a href="services.html" class="nav-link text-2xl">Services</a>
+<a href="pricing.html" class="nav-link text-2xl" style="color:var(--gold)">Pricing</a>
+<a href="gallery.html" class="nav-link text-2xl">Gallery</a>
+<a href="bridal.html" class="nav-link text-2xl">Bridal Packages</a>
+<a href="booking.html" class="nav-link text-2xl">Book Appointment</a>
+<a href="blog.html" class="nav-link text-2xl">Blog</a>
+<a href="contact.html" class="nav-link text-2xl">Contact</a>
+<div class="flex gap-4 mt-4"><a href="login.html" class="rose-btn">Login</a><a href="signup.html" class="gold-btn text-sm">Sign Up</a></div>
+</div>
+
+<section class="pt-28 pb-24 min-h-screen">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<p class="text-yellow-500 font-montserrat text-sm tracking-widest uppercase mb-3">Investment in Beauty</p>
+<h1 class="text-5xl md:text-6xl font-bold mb-6"><span class="gold-text">Pricing</span> Plans</h1>
+<div class="section-divider"></div>
+<p class="text-gray-400 mt-6 max-w-2xl mx-auto">Transparent pricing for all our premium beauty services and exclusive membership plans</p>
+</div>
+
+<!-- Individual Services Pricing -->
+<div class="mb-20">
+<h3 class="text-3xl font-bold mb-12 text-center"><span class="gold-text">Individual</span> Services</h3>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="glass-card p-8 reveal">
+<h4 class="font-bold text-yellow-500 mb-6 flex items-center gap-2"><span class="text-2xl">✂️</span> Hair Services</h4>
+<div class="space-y-0">
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Hair Cut</span><span class="text-yellow-500 font-bold font-montserrat">₹800+</span></div>
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Hair Styling</span><span class="text-yellow-500 font-bold font-montserrat">₹1,200+</span></div>
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Hair Coloring</span><span class="text-yellow-500 font-bold font-montserrat">₹2,500+</span></div>
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Hair Spa</span><span class="text-yellow-500 font-bold font-montserrat">₹2,000+</span></div>
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Keratin Treatment</span><span class="text-yellow-500 font-bold font-montserrat">₹5,000+</span></div>
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Highlights</span><span class="text-yellow-500 font-bold font-montserrat">₹3,000+</span></div>
+</div>
+</div>
+<div class="glass-card p-8 reveal">
+<h4 class="font-bold text-yellow-500 mb-6 flex items-center gap-2"><span class="text-2xl">💄</span> Makeup</h4>
+<div class="space-y-0">
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Bridal Makeup</span><span class="text-yellow-500 font-bold font-montserrat">₹15,000+</span></div>
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">HD Makeup</span><span class="text-yellow-500 font-bold font-montserrat">₹5,000+</span></div>
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Party Makeup</span><span class="text-yellow-500 font-bold font-montserrat">₹3,000+</span></div>
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Engagement Look</span><span class="text-yellow-500 font-bold font-montserrat">₹8,000+</span></div>
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Reception Makeup</span><span class="text-yellow-500 font-bold font-montserrat">₹10,000+</span></div>
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Airbrush Makeup</span><span class="text-yellow-500 font-bold font-montserrat">₹7,000+</span></div>
+</div>
+</div>
+<div class="glass-card p-8 reveal">
+<h4 class="font-bold text-yellow-500 mb-6 flex items-center gap-2"><span class="text-2xl">🧖‍♀️</span> Skin Care</h4>
+<div class="space-y-0">
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Facial</span><span class="text-yellow-500 font-bold font-montserrat">₹1,500+</span></div>
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Hydra Facial</span><span class="text-yellow-500 font-bold font-montserrat">₹3,500+</span></div>
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Cleanup</span><span class="text-yellow-500 font-bold font-montserrat">₹800+</span></div>
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Body Spa</span><span class="text-yellow-500 font-bold font-montserrat">₹4,000+</span></div>
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Anti-Aging Facial</span><span class="text-yellow-500 font-bold font-montserrat">₹5,000+</span></div>
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Gold Facial</span><span class="text-yellow-500 font-bold font-montserrat">₹2,500+</span></div>
+</div>
+</div>
+<div class="glass-card p-8 reveal">
+<h4 class="font-bold text-yellow-500 mb-6 flex items-center gap-2"><span class="text-2xl">💅</span> Nail & Spa</h4>
+<div class="space-y-0">
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Nail Art</span><span class="text-yellow-500 font-bold font-montserrat">₹1,000+</span></div>
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Manicure</span><span class="text-yellow-500 font-bold font-montserrat">₹600+</span></div>
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Pedicure</span><span class="text-yellow-500 font-bold font-montserrat">₹800+</span></div>
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Gel Nails</span><span class="text-yellow-500 font-bold font-montserrat">₹1,500+</span></div>
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Spa Mani-Pedi</span><span class="text-yellow-500 font-bold font-montserrat">₹2,000+</span></div>
+<div class="pricing-table-row"><span class="text-gray-400 text-sm">Nail Extensions</span><span class="text-yellow-500 font-bold font-montserrat">₹2,500+</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Gold Membership Plans -->
+<div class="mb-20">
+<div class="text-center mb-12 reveal">
+<h3 class="text-3xl font-bold mb-4"><span class="gold-text">Gold Membership</span> Plans</h3>
+<div class="section-divider"></div>
+<p class="text-gray-400 mt-4">Save more with our exclusive monthly membership plans</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="glass-card p-8 text-center relative reveal">
+<div class="text-3xl mb-4"></div>
+<h4 class="text-xl font-bold mb-2">Silver</h4>
+<p class="text-3xl font-bold text-yellow-500 font-montserrat">₹4,999<span class="text-sm text-gray-500">/month</span></p>
+<ul class="text-gray-400 space-y-3 my-8 text-sm text-left">
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> 2 Facials per month</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> 1 Hair Treatment</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> 1 Manicure</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> 1 Pedicure</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> 10% off all services</li>
+<li class="flex items-center gap-2 text-gray-600"><span>✗</span> Body Spa</li>
+<li class="flex items-center gap-2 text-gray-600"><span>✗</span> Priority Booking</li>
+</ul>
+<button onclick="showToast('Silver Membership plan selected! Complete booking to continue. 💎')" class="rose-btn w-full">Choose Plan</button>
+</div>
+<div class="glass-card p-8 text-center relative reveal" style="border-color:rgba(212,175,55,0.5)!important;box-shadow:0 0 40px rgba(212,175,55,0.15);">
+<div class="discount-badge">SAVE 25%</div>
+<div class="text-3xl mb-4">🥇</div>
+<h4 class="text-xl font-bold mb-2 gold-text">Gold</h4>
+<p class="text-3xl font-bold text-yellow-500 font-montserrat">₹9,999<span class="text-sm text-gray-500">/month</span></p>
+<ul class="text-gray-400 space-y-3 my-8 text-sm text-left">
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> 4 Facials per month</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> 2 Hair Treatments</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Unlimited Mani-Pedi</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> 2 Body Spas</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> 20% off all services</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Priority Booking</li>
+<li class="flex items-center gap-2 text-gray-600"><span>✗</span> Exclusive Products</li>
+</ul>
+<button onclick="openPaymentModal()" class="gold-btn w-full">Choose Plan</button>
+</div>
+<div class="glass-card p-8 text-center relative reveal">
+<div class="text-3xl mb-4">💎</div>
+<h4 class="text-xl font-bold mb-2">Diamond</h4>
+<p class="text-3xl font-bold text-yellow-500 font-montserrat">₹19,999<span class="text-sm text-gray-500">/month</span></p>
+<ul class="text-gray-400 space-y-3 my-8 text-sm text-left">
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Unlimited Services</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Monthly Hair Color</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> 4 Body Spas</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Exclusive Products</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> 30% off all services</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> VIP Treatment</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Personal Consultant</li>
+</ul>
+<button onclick="showToast('Diamond Membership plan selected! Complete booking to continue. 💎')" class="rose-btn w-full">Choose Plan</button>
+</div>
+</div>
+</div>
+
+<!-- Bridal Packages Preview -->
+<div class="mb-20">
+<div class="text-center mb-12 reveal">
+<h3 class="text-3xl font-bold mb-4"><span class="gold-text">Bridal</span> Packages</h3>
+<div class="section-divider"></div>
+<p class="text-gray-400 mt-4">Make your special day unforgettable with our curated bridal packages</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="glass-card p-8 text-center relative reveal">
+<div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-yellow-500/20 to-rose-400/20 flex items-center justify-center text-4xl">🌸</div>
+<h3 class="text-2xl font-bold mb-2">Essential Bridal</h3>
+<p class="text-4xl font-bold text-yellow-500 my-4 font-montserrat">₹24,999</p>
+<ul class="text-gray-400 space-y-3 mb-8 text-sm text-left">
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Bridal Makeup (HD)</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Hair Styling & Care</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Facial & Cleanup</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Mehendi Application</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Basic Nail Art</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> D-Day Makeup Trial</li>
+</ul>
+<a href="bridal.html" class="rose-btn w-full inline-block text-center">View Details</a>
+</div>
+<div class="glass-card p-8 text-center relative" style="border-color:rgba(212,175,55,0.5)!important;box-shadow:0 0 40px rgba(212,175,55,0.15);">
+<div class="discount-badge">BEST VALUE</div>
+<div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-yellow-500/30 to-rose-400/30 flex items-center justify-center text-4xl">👑</div>
+<h3 class="text-2xl font-bold mb-2 gold-text">Premium Bridal</h3>
+<p class="text-4xl font-bold text-yellow-500 my-4 font-montserrat">₹49,999</p>
+<ul class="text-gray-400 space-y-3 mb-8 text-sm text-left">
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Bridal + Reception Makeup</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Advanced Hair Spa</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Hydra Facial Series (3)</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Full Body Spa</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Premium Nail Art</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Pre-Wedding Shoot Makeup</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Engagement Makeup</li>
+</ul>
+<a href="bridal.html" class="gold-btn w-full inline-block text-center">View Details</a>
+</div>
+<div class="glass-card p-8 text-center relative">
+<div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-yellow-500/20 to-rose-400/20 flex items-center justify-center text-4xl">💎</div>
+<h3 class="text-2xl font-bold mb-2">Royal Bridal</h3>
+<p class="text-4xl font-bold text-yellow-500 my-4 font-montserrat">₹99,999</p>
+<ul class="text-gray-400 space-y-3 mb-8 text-sm text-left">
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> All Premium Services</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Haldi Ceremony Makeup</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Sangeet Makeup</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Mehendi Night Look</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Luxury Keratin Treatment</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Complete Skin Care Package</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> Personal Beauty Consultant</li>
+<li class="flex items-center gap-2"><span class="text-green-400">✓</span> On-Location Services</li>
+</ul>
+<a href="bridal.html" class="rose-btn w-full inline-block text-center">View Details</a>
+</div>
+</div>
+</div>
+
+<!-- Monthly Beauty Packages -->
+<div class="mb-20">
+<div class="text-center mb-12 reveal">
+<h3 class="text-3xl font-bold mb-4"><span class="gold-text">Monthly Beauty</span> Packages</h3>
+<div class="section-divider"></div>
+</div>
+<div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+<div class="glass-card p-8 reveal">
+<div class="flex items-center justify-between mb-6">
+<h4 class="text-xl font-bold text-yellow-500">Glow Getter</h4>
+<span class="text-2xl font-bold font-montserrat">₹3,499<span class="text-sm text-gray-500">/month</span></span>
+</div>
+<ul class="text-gray-400 space-y-3 mb-6 text-sm">
+<li class="flex items-center gap-2"><span class="text-yellow-500">✦</span> 2 Facials per month</li>
+<li class="flex items-center gap-2"><span class="text-yellow-500">✦</span> 1 Hair Treatment</li>
+<li class="flex items-center gap-2"><span class="text-yellow-500">✦</span> 1 Manicure + Pedicure</li>
+<li class="flex items-center gap-2"><span class="text-yellow-500">✦</span> 15% off additional services</li>
+</ul>
+<a href="booking.html" class="rose-btn w-full inline-block text-center">Book Now</a>
+</div>
+<div class="glass-card p-8 reveal" style="border-color:rgba(212,175,55,0.4)!important;">
+<div class="flex items-center justify-between mb-6">
+<h4 class="text-xl font-bold gold-text">Beauty Queen</h4>
+<span class="text-2xl font-bold font-montserrat">₹6,999<span class="text-sm text-gray-500">/month</span></span>
+</div>
+<ul class="text-gray-400 space-y-3 mb-6 text-sm">
+<li class="flex items-center gap-2"><span class="text-yellow-500">✦</span> 4 Facials per month</li>
+<li class="flex items-center gap-2"><span class="text-yellow-500">✦</span> 2 Hair Treatments</li>
+<li class="flex items-center gap-2"><span class="text-yellow-500">✦</span> 2 Body Spas</li>
+<li class="flex items-center gap-2"><span class="text-yellow-500">✦</span> Unlimited Mani-Pedi</li>
+<li class="flex items-center gap-2"><span class="text-yellow-500">✦</span> 25% off additional services</li>
+</ul>
+<a href="booking.html" class="gold-btn w-full inline-block text-center">Book Now</a>
+</div>
+</div>
+</div>
+
+<!-- Discount Offers -->
+<div class="mb-16 reveal">
+<div class="glass-card p-8 md:p-12" style="background:linear-gradient(135deg,rgba(212,175,55,0.1),rgba(183,110,121,0.05));border-color:rgba(212,175,55,0.3);">
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div>
+<h3 class="text-3xl font-bold mb-4">🎉 Special <span class="gold-text">Offers</span></h3>
+<div class="space-y-4">
+<div class="flex items-center gap-4 glass p-4 rounded-xl">
+<div class="text-3xl">🎄</div>
+<div><h4 class="font-bold text-yellow-500">Festival Special</h4><p class="text-sm text-gray-400">20% off on all services during festivals</p></div>
+</div>
+<div class="flex items-center gap-4 glass p-4 rounded-xl">
+<div class="text-3xl">👭</div>
+<div><h4 class="font-bold text-yellow-500">Refer & Earn</h4><p class="text-sm text-gray-400">Refer a friend and get ₹500 off your next visit</p></div>
+</div>
+<div class="flex items-center gap-4 glass p-4 rounded-xl">
+<div class="text-3xl">🎁</div>
+<div><h4 class="font-bold text-yellow-500">Gift Cards</h4><p class="text-sm text-gray-400">Perfect gift for your loved ones</p></div>
+</div>
+</div>
+</div>
+<div class="text-center">
+<p class="text-gray-400 mb-6">Use code <span class="text-yellow-500 font-bold text-lg">GLOW20</span> for 20% off your first visit!</p>
+<a href="booking.html" class="gold-btn inline-block">Claim Offer</a>
+</div>
+</div>
+</div>
+</div>
+
+<div class="text-center reveal">
+<a href="booking.html" class="gold-btn inline-block">Book Your Service</a>
+<a href="services.html" class="rose-btn inline-block ml-4">View All Services</a>
+</div>
+</div>
+</section>
+
+<footer class="border-t border-yellow-500/10 pt-16 pb-8"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+<div><div class="flex items-center gap-3 mb-6"><div class="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-600 to-rose-400 flex items-center justify-center"><span class="text-black font-bold text-lg font-montserrat">G</span></div><div><h3 class="text-xl gold-text font-bold">Glow & Glam</h3><p class="text-xs text-gray-500">LUXURY SALON</p></div></div><p class="text-sm text-gray-400 leading-relaxed mb-6">Where luxury meets beauty. Experience the finest in hair, makeup, and skincare services.</p><div class="flex gap-3"><a href="#" class="w-10 h-10 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-500 hover:bg-yellow-500 hover:text-black transition">📘</a><a href="#" class="w-10 h-10 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-500 hover:bg-yellow-500 hover:text-black transition">📷</a><a href="#" class="w-10 h-10 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-500 hover:bg-yellow-500 hover:text-black transition">🐦</a><a href="#" class="w-10 h-10 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-500 hover:bg-yellow-500 hover:text-black transition">📌</a></div></div>
+<div><h4 class="font-bold text-yellow-500 mb-6">Quick Links</h4><div class="space-y-3"><a href="index.html" class="block text-sm text-gray-400 hover:text-yellow-500 transition">Home</a><a href="about.html" class="block text-sm text-gray-400 hover:text-yellow-500 transition">About Us</a><a href="services.html" class="block text-sm text-gray-400 hover:text-yellow-500 transition">Services</a><a href="pricing.html" class="block text-sm text-gray-400 hover:text-yellow-500 transition">Pricing</a><a href="gallery.html" class="block text-sm text-gray-400 hover:text-yellow-500 transition">Gallery</a><a href="booking.html" class="block text-sm text-gray-400 hover:text-yellow-500 transition">Book Now</a><a href="blog.html" class="block text-sm text-gray-400 hover:text-yellow-500 transition">Blog</a></div></div>
+<div><h4 class="font-bold text-yellow-500 mb-6">Services</h4><div class="space-y-3"><a href="services.html" class="block text-sm text-gray-400 hover:text-yellow-500 transition">Hair Styling</a><a href="bridal.html" class="block text-sm text-gray-400 hover:text-yellow-500 transition">Bridal Makeup</a><a href="services.html" class="block text-sm text-gray-400 hover:text-yellow-500 transition">Skin Care</a><a href="services.html" class="block text-sm text-gray-400 hover:text-yellow-500 transition">Body Spa</a><a href="services.html" class="block text-sm text-gray-400 hover:text-yellow-500 transition">Nail Art</a><a href="services.html" class="block text-sm text-gray-400 hover:text-yellow-500 transition">Hair Coloring</a></div></div>
+<div><h4 class="font-bold text-yellow-500 mb-6">Newsletter</h4><p class="text-sm text-gray-400 mb-4">Subscribe for exclusive offers and beauty tips.</p><div class="flex gap-2 mb-6"><input type="email" class="form-input text-sm" placeholder="Your email"><button class="gold-btn text-xs px-4 py-3" style="padding:10px 16px;">→</button></div><h4 class="font-bold text-yellow-500 mb-4">Contact</h4><p class="text-sm text-gray-400 mb-2">📞 +91 99999 99999</p><p class="text-sm text-gray-400"> Mumbai, India</p></div>
+</div>
+<div class="border-t border-yellow-500/10 pt-8 flex flex-wrap justify-between items-center gap-4"><p class="text-sm text-gray-500">© 2026 Glow & Glam Luxury Salon. All rights reserved.</p><div class="flex gap-6"><a href="#" class="text-sm text-gray-500 hover:text-yellow-500 transition">Privacy Policy</a><a href="#" class="text-sm text-gray-500 hover:text-yellow-500 transition">Terms & Conditions</a></div></div>
+</div></footer>
+
+<div class="modal-overlay" id="loginModal"><div class="modal-content"><div class="text-center mb-8"><div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-yellow-600 to-rose-400 flex items-center justify-center"><span class="text-black font-bold text-2xl font-montserrat">G</span></div><h2 class="text-2xl font-bold gold-text">Welcome Back</h2></div><form onsubmit="handleLogin(event)"><div class="mb-4"><label class="text-sm text-gray-400 mb-2 block">Email</label><input type="email" class="form-input" placeholder="your@email.com" required></div><div class="mb-6"><label class="text-sm text-gray-400 mb-2 block">Password</label><input type="password" class="form-input" placeholder="••••••••" required></div><button type="submit" class="gold-btn w-full mb-4">Sign In</button><p class="text-center text-sm text-gray-400">Don't have an account? <a href="signup.html" class="text-yellow-500">Sign Up</a></p></form><button onclick="closeModal('loginModal')" class="absolute top-4 right-4 text-gray-500 hover:text-yellow-500 text-2xl">&times;</button></div></div>
+
+<div class="modal-overlay" id="paymentModal"><div class="modal-content"><h2 class="text-2xl font-bold gold-text mb-6 text-center">Secure Payment</h2><div class="glass p-4 rounded-xl mb-6"><div class="flex justify-between items-center mb-3"><span class="text-gray-400">Plan</span><span class="text-yellow-500 font-bold">Gold Membership</span></div><div class="flex justify-between items-center mb-3"><span class="text-gray-400">Billing</span><span>Monthly</span></div><div class="border-t border-yellow-500/20 pt-3 flex justify-between items-center"><span class="font-bold">Total</span><span class="text-2xl font-bold text-yellow-500 font-montserrat">₹9,999</span></div></div><div class="space-y-3 mb-6"><div class="glass p-4 rounded-xl flex items-center gap-4 cursor-pointer hover:border-yellow-500/40 transition"><div class="text-2xl">💳</div><div><p class="font-bold text-sm">Credit/Debit Card</p><p class="text-xs text-gray-500">Visa, Mastercard, RuPay</p></div></div><div class="glass p-4 rounded-xl flex items-center gap-4 cursor-pointer hover:border-yellow-500/40 transition"><div class="text-2xl"></div><div><p class="font-bold text-sm">UPI Payment</p><p class="text-xs text-gray-500">GPay, PhonePe, Paytm</p></div></div><div class="glass p-4 rounded-xl flex items-center gap-4 cursor-pointer hover:border-yellow-500/40 transition"><div class="text-2xl">🏦</div><div><p class="font-bold text-sm">Net Banking</p><p class="text-xs text-gray-500">All major banks</p></div></div><div class="glass p-4 rounded-xl flex items-center gap-4 cursor-pointer hover:border-yellow-500/40 transition"><div class="text-2xl">💰</div><div><p class="font-bold text-sm">Pay at Salon</p><p class="text-xs text-gray-500">Cash or card on arrival</p></div></div></div><button onclick="processPayment()" class="gold-btn w-full mb-3">Pay ₹9,999</button><button onclick="closeModal('paymentModal')" class="w-full text-center text-sm text-gray-500 hover:text-yellow-500 transition">Cancel</button><button onclick="closeModal('paymentModal')" class="absolute top-4 right-4 text-gray-500 hover:text-yellow-500 text-2xl">&times;</button></div></div>
+
+<div class="chatbot-toggle" onclick="toggleChatbot()" id="chatbotToggle"><span class="text-2xl">💬</span></div>
+<div class="chatbot-window glass" id="chatbotWindow"><div class="p-4 border-b border-yellow-500/20 flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-500 to-rose-400 flex items-center justify-center"><span class="text-black text-sm font-bold">G</span></div><div><p class="font-bold text-sm">GlowBot</p><p class="text-xs text-green-400">● Online</p></div></div><button onclick="toggleChatbot()" class="text-gray-400 hover:text-yellow-500 text-xl">&times;</button></div><div class="chat-messages" id="chatMessages"><div class="chat-msg bot">Hi there! 👋 I'm GlowBot, your personal beauty assistant. How can I help you today?</div></div><div class="chat-input-area"><input type="text" id="chatInput" placeholder="Type your message..." onkeypress="if(event.key==='Enter')sendChatMessage()"><button onclick="sendChatMessage()">➤</button></div></div>
+<div class="toast" id="toast"><p id="toastMessage" class="text-sm"></p></div>
+
+<script>
+window.addEventListener('load',function(){setTimeout(function(){document.getElementById('loadingScreen').classList.add('hidden')},1500)});
+window.addEventListener('scroll',function(){const nav=document.getElementById('mainNav');if(window.scrollY>50){nav.style.background='rgba(10,10,10,0.95)'}else{nav.style.background='transparent'}});
+function toggleMobileMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function openModal(id){document.getElementById(id).classList.add('open')}
+function closeModal(id){document.getElementById(id).classList.remove('open')}
+function initReveal(){var reveals=document.querySelectorAll('.reveal');var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('active')}})},{threshold:0.1});reveals.forEach(function(el){observer.observe(el)})}
+function toggleChatbot(){document.getElementById('chatbotWindow').classList.toggle('open')}
+function openPaymentModal(){openModal('paymentModal')}
+function processPayment(){closeModal('paymentModal');showToast('Payment successful! Your Gold Membership is now active. 💳✅')}
+var chatResponses={'hello':'Hello! Welcome to Glow & Glam! 💎','hi':'Hi there! Ready to transform your look?','booking':'You can <a href="booking.html" class="text-yellow-400 underline">book here</a> or WhatsApp us!','services':'We offer 15+ luxury services! <a href="services.html" class="text-yellow-400 underline">View all</a>','price':'Services start from ₹600. <a href="pricing.html" class="text-yellow-400 underline">See pricing</a>','hours':'Mon-Sat: 10AM-8PM, Sunday: 11AM-6PM','bridal':'Bridal packages from ₹24,999! <a href="bridal.html" class="text-yellow-400 underline">View packages</a>','location':'123 Luxury Avenue, Mumbai. <a href="contact.html" class="text-yellow-400 underline">Contact us</a>','thank':'You\'re welcome! 💖','default':'For assistance, call +91 99999 99999 or <a href="contact.html" class="text-yellow-400 underline">contact us</a>! 😊'};
+function sendChatMessage(){var input=document.getElementById('chatInput');var msg=input.value.trim();if(!msg)return;var messagesDiv=document.getElementById('chatMessages');var userMsg=document.createElement('div');userMsg.className='chat-msg user';userMsg.textContent=msg;messagesDiv.appendChild(userMsg);input.value='';setTimeout(function(){var lowerMsg=msg.toLowerCase();var response=chatResponses['default'];for(var key in chatResponses){if(lowerMsg.includes(key)){response=chatResponses[key];break}}var botMsg=document.createElement('div');botMsg.className='chat-msg bot';botMsg.innerHTML=response;messagesDiv.appendChild(botMsg);messagesDiv.scrollTop=messagesDiv.scrollHeight},800);messagesDiv.scrollTop=messagesDiv.scrollHeight}
+function handleLogin(e){e.preventDefault();closeModal('loginModal');showToast('Welcome back to Glow & Glam! 💎')}
+function showToast(msg){var toast=document.getElementById('toast');document.getElementById('toastMessage').textContent=msg;toast.classList.add('show');setTimeout(function(){toast.classList.remove('show')},4000)}
+document.querySelectorAll('.modal-overlay').forEach(function(overlay){overlay.addEventListener('click',function(e){if(e.target===overlay){overlay.classList.remove('open')}})});
+document.addEventListener('DOMContentLoaded',function(){initReveal()});
+</script>
+</body>
+</html>
+
